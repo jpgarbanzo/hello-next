@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from 'react';
 
 const opcionesDeMenu = [
   { 
@@ -11,6 +14,8 @@ const opcionesDeMenu = [
 ];
 
 const menu = function () {
+  const [elementoActivo, setElementoActivo] = useState(1);
+
   return (
     <nav>
       <h1 className="text-4xl font-extrabold mb-4">Menu</h1>
@@ -19,8 +24,13 @@ const menu = function () {
           key={opcion.id}
           href={opcion.link}
           className="p-4 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+          onClick={() => {
+            setElementoActivo(opcion.id);
+          }}
           >
             {opcion.texto}
+            {elementoActivo === opcion.id &&
+             (<span>*</span>)}
           </a>
       ))}
     </nav>
