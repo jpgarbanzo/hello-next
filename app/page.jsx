@@ -18,7 +18,6 @@ const menu = function () {
 
   return (
     <nav>
-      <h1 className="text-4xl font-extrabold mb-4">Menu</h1>
       {opcionesDeMenu.map((opcion) => (
         <a
           key={opcion.id}
@@ -28,11 +27,48 @@ const menu = function () {
             setElementoActivo(opcion.id);
           }}
           >
-            {opcion.texto}
             {elementoActivo === opcion.id &&
-             (<span>*</span>)}
+             (<span>→</span>)}
+            {opcion.texto}
           </a>
+
       ))}
+
+      { elementoActivo === 1 &&
+          (<div className="max-w-lg">
+            <h1 className="text-4xl font-extrabold mb-4">About</h1>
+            <p className="text-sm text-gray-700 dark:text-gray-200">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              tincidunt, nunc at bibendum facilisis, nunc nisl aliquet nunc, nec
+              aliquet nunc nisl nec nunc. Sed tincidunt, nunc at bibendum
+              facilisis, nunc nisl aliquet nunc, nec aliquet nunc nisl nec nunc.
+            </p>
+          </div>)
+      }
+
+      { elementoActivo === 2 &&
+          (<div className="max-w-lg">
+            <h1 className="text-4xl font-extrabold mb-4">Experiencia</h1>
+            <p className="text-sm text-gray-700 dark:text-gray-200">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              tincidunt, nunc at bibendum facilisis, nunc nisl aliquet nunc, nec
+              aliquet nunc nisl nec nunc. Sed tincidunt, nunc at bibendum
+              facilisis, nunc nisl aliquet nunc, nec aliquet nunc nisl nec nunc.
+            </p>
+          </div>)
+      }
+
+      { elementoActivo === 3 &&
+          (<div className="max-w-lg">
+            <h1 className="text-4xl font-extrabold mb-4">Contacto</h1>
+            <p className="text-sm text-gray-700 dark:text-gray-200">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              tincidunt, nunc at bibendum facilisis, nunc nisl aliquet nunc, nec
+              aliquet nunc nisl nec nunc. Sed tincidunt, nunc at bibendum
+              facilisis, nunc nisl aliquet nunc, nec aliquet nunc nisl nec nunc.
+            </p>
+          </div>)
+      }
     </nav>
   );
 };
