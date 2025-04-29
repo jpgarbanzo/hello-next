@@ -1,15 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from 'react';
+import { useState } from "react";
+import Navigation from "./components/Navigation"; // Import Navigation
 
 const opcionesDeMenu = [
   { 
-    id: 1, texto: 'Acerca De', link: '#about', isSelected: false
+    id: 1, texto: 'Acerca De', link: 'about', isSelected: false
   }, { 
-    id: 2, texto: 'Tecnologías', link: '#technologies', isSelected: true
+    id: 2, texto: 'Experiencia', link: 'experience', isSelected: true
   }, { 
-    id: 3, texto: 'Contacto', link: '#contact', isSelected: false
+    id: 3, texto: 'Contacto', link: 'contact', isSelected: false
   }
 ];
 
@@ -76,6 +77,7 @@ const menu = function () {
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <Navigation name="Jose" />
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         {menu()}
 
