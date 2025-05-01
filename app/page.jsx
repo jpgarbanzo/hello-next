@@ -3,19 +3,26 @@
 import Image from "next/image";
 import { useState } from "react";
 import Navigation from "./components/Navigation"; // Import Navigation
+import Content from "./components/Content";
+import Contador from "./components/Contador";
 
 const opcionesDeMenu = [
   { 
-    id: 1, texto: 'Acerca De', link: 'about', isSelected: false
+    id: 1, texto: 'Acerca De', link: '#about', isSelected: false
   }, { 
-    id: 2, texto: 'Experiencia', link: 'experience', isSelected: true
+    id: 2, texto: 'Experiencia', link: '#experience', isSelected: true
   }, { 
-    id: 3, texto: 'Contacto', link: 'contact', isSelected: false
+    id: 3, texto: 'Contacto', link: '#contact', isSelected: false
   }
 ];
 
 const menu = function () {
   const [elementoActivo, setElementoActivo] = useState(1);
+  const [contador, setContador] = useState(50);
+
+  const handleIncrement = (newValue) => {
+    setContador(newValue); // Update the parent state when the event is emitted
+  };
 
   return (
     <nav>
@@ -35,41 +42,15 @@ const menu = function () {
 
       ))}
 
-      { elementoActivo === 1 &&
-          (<div className="max-w-lg">
-            <h1 className="text-4xl font-extrabold mb-4">About</h1>
-            <p className="text-sm text-gray-700 dark:text-gray-200">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              tincidunt, nunc at bibendum facilisis, nunc nisl aliquet nunc, nec
-              aliquet nunc nisl nec nunc. Sed tincidunt, nunc at bibendum
-              facilisis, nunc nisl aliquet nunc, nec aliquet nunc nisl nec nunc.
-            </p>
-          </div>)
-      }
+      <Content elementoActivoHijo={elementoActivo} />
 
-      { elementoActivo === 2 &&
-          (<div className="max-w-lg">
-            <h1 className="text-4xl font-extrabold mb-4">Experiencia</h1>
-            <p className="text-sm text-gray-700 dark:text-gray-200">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              tincidunt, nunc at bibendum facilisis, nunc nisl aliquet nunc, nec
-              aliquet nunc nisl nec nunc. Sed tincidunt, nunc at bibendum
-              facilisis, nunc nisl aliquet nunc, nec aliquet nunc nisl nec nunc.
-            </p>
-          </div>)
-      }
-
-      { elementoActivo === 3 &&
-          (<div className="max-w-lg">
-            <h1 className="text-4xl font-extrabold mb-4">Contacto</h1>
-            <p className="text-sm text-gray-700 dark:text-gray-200">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              tincidunt, nunc at bibendum facilisis, nunc nisl aliquet nunc, nec
-              aliquet nunc nisl nec nunc. Sed tincidunt, nunc at bibendum
-              facilisis, nunc nisl aliquet nunc, nec aliquet nunc nisl nec nunc.
-            </p>
-          </div>)
-      }
+        <button 
+          className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          onClick={() => setContador(contador + 1)}
+        >
+          Click Me {contador}
+        </button>
+      <Contador initialValue={contador} onIncrement={handleIncrement} />
     </nav>
   );
 };
