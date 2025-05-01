@@ -50,7 +50,10 @@ const menu = function () {
         >
           Click Me {contador}
         </button>
-      <Contador initialValue={contador} onIncrement={handleIncrement} />
+      <Contador 
+        initialValue={contador} 
+        etiqueta={"Counter"}
+        onIncrement={handleIncrement} />
     </nav>
   );
 };
