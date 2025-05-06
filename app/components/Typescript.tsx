@@ -6,6 +6,7 @@ import React from "react";
 const myString: string = "Hello, TypeScript!";
 const myNumber: number = 42;
 const myBoolean: boolean = true;
+
 const myArray: number[] = [1, 2, 3, 4, 5];
 const myTuple: [string, number] = ["Age", 30];
 const myObject: { name: string; age: number } = { name: "Jose", age: 30 };
@@ -16,13 +17,12 @@ const multiply = (a: number, b: number): number => {
 };
 
 // Enum example
-enum Direction {
+enum Navigation {
   Up = "UP",
   Down = "DOWN",
   Left = "LEFT",
-  Right = "RIGHT",
+  Right = "RIGHT"
 }
-const myDirection: Direction = Direction.Up;
 
 // Define a TypeScript interface for props
 interface GreetingProps {
