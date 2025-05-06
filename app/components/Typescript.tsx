@@ -35,7 +35,9 @@ const Greeting: React.FC<GreetingProps> = ({ name, age }) => {
   return (
     <div>
       <p>Hello, {name}!</p>
-      {age && <p>You are {age} years old.</p>}
+      {age? 
+      <p>You are {age} years old.</p> : 
+      <p>Age not provided.</p>}
     </div>
   );
 };
@@ -52,6 +54,20 @@ const StatusMessage: React.FC<{ status: Status }> = ({ status }) => {
   return <p>Status: {status}</p>;
 };
 
+interface Persona {
+  nombre: string;
+  apellido: string;
+}
+
+const NombreCompleto: React.FC<Persona> = ({nombre, apellido}) => {
+  return <p>El nombre completo es: <span>{nombre} {apellido}</span></p>;
+};
+
+// agregar otro componente que se llame NombreCompleto
+// que reciba un nombre y un apellido y los muestre en pantalla
+// ese nombre y apellido deben estar definidos en un interface llamado Persona
+
+
 // Main component to showcase examples
 const TypescriptExamples: React.FC = () => {
   return (
@@ -61,6 +77,8 @@ const TypescriptExamples: React.FC = () => {
       <Greeting name="Maria" />
       <p>Sum of 5 and 10 is: {addNumbers(5, 10)}</p>
       <StatusMessage status="success" />
+
+      <NombreCompleto nombre="Juan" apellido="Perez"/>
     </div>
   );
 };
